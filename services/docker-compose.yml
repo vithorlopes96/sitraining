@@ -1,0 +1,16 @@
+
+services:
+  database:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: sitraining
+      POSTGRES_PASSWORD: vithor
+      POSTGRES_DB: sitraining_services
+    volumes:
+      - ./postgres_db_data:/var/lib/postgresql/data
+      - ./postgres_db_config:/var/lib/postgresql/config
+      - ./database/:/docker-entrypoint-initdb.d
